@@ -1,0 +1,4 @@
+include:
+  - project: 'devops/templates/template-gitlab-ci'
+    ref: master
+    file: '/MavenSpringBootSQLServerPalmasNatal.gitlab-ci.yml'

@@ -1,0 +1,51 @@
+server:
+  port: ${PORT:8096}
+
+management:
+  security:
+    enabled: false
+    health.defaults.enabled: false
+
+health.config.enabled: false
+  
+spring:
+  application:
+    name: sarh-service
+  
+  datasource:
+    url: jdbc:sqlserver://PALMAS:1433;databaseName=SGP
+    username: reportservice
+    password: Cpts07
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        
+security:
+  jwt:
+    resource-ids: client-password
+  sessions: stateless
+  basic:
+    enabled: false
+  user:
+    password: none    
+  oauth2:
+    resource:
+      jwt:
+        keyValue: |
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArCamNYb95w+dExQtOAYQ
+            WCe4SGfTM/44OMSWw0REjPEULTNGXpBeTchS5OvqFc2x4lJ5uPxnOE1/zMZ0KPjS
+            KwUVp7dCK08D9XW7cYZdVXu8KD6nw5oYxB7U1nDfmgw/Hbb60nGF7vfAHtMSPkyT
+            fm/hkTi3OQ5826euft7ws3PHSpzWmif+hZ/zCFwwnsyIcMjfhinxb24f9z1wV3Ht
+            J3b7ysuc9CDLlzKnT5JnUKsf7iCI5k73f8ygNK5p1C6YiMvYFMKqGQR9D1nmLxIN
+            BaflvsozJ/m0cFPnGS8j2JyPDExtgJ96iuBjrs7Bh3XEqIAaau7COE2QGbHcsvb4
+            EQIDAQAB
+            -----END PUBLIC KEY-----
